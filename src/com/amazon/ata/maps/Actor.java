@@ -1,6 +1,7 @@
 package com.amazon.ata.maps;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * Represents an actor in IMDB. Each actor's name must be unique.
@@ -21,6 +22,18 @@ public class Actor {
         this.name = name;
         this.birthdate = birthdate;
         this.birthCity = birthCity;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Actor actor)) return false;
+        return Objects.equals(name, actor.name) && Objects.equals(birthdate, actor.birthdate) && Objects.equals(birthCity, actor.birthCity);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, birthdate, birthCity);
     }
 
     @Override
